@@ -1,0 +1,83 @@
+letters = {
+    'slotletter1': [
+        "███╗   ██╗",  
+        "████╗  ██║",  
+        "██╔██╗ ██║",  
+        "██║╚██╗██║",  
+        "██║ ╚████║",  
+        "╚═╝  ╚═══╝"
+    ],
+    'slotletter2': [
+        " ██████╗ ", 
+        "██╔═══██╗",
+        "██║   ██║",
+        "██║   ██║",
+        "╚██████╔╝",
+        " ╚═════╝ "
+    ],
+    'slotletter3': [
+        "██╗   ██╗",
+        "██║   ██║",
+        "██║   ██║",
+        "╚██╗ ██╔╝",
+        " ╚████╔╝ ",
+        "  ╚═══╝  "
+    ],
+    'slotletter4': [
+        "██╗      ",
+        "██║      ",
+        "██║      ",
+        "██║      ",
+        "███████╗ ",
+        "╚══════╝ "
+    ],
+    'slotletter5': [
+        "████████╗",
+        "╚══██╔══╝",
+        "   ██║   ",
+        "   ██║   ",
+        "   ██║   ",
+        "   ╚═╝   "
+    ]
+}
+
+def spin_slot_machine():
+    result = random.choices(list(letters.keys()), k=3)
+    return result
+
+def win_slot_machine():
+    return ['slotletter1', 'slotletter1', 'slotletter1']
+
+def check_win(result):
+    if result[0] == result[1] == result[2]:
+        return True
+    return False
+
+def print_result(result):
+    for i in range(6):
+        print(f"{letters[result[0]][i]}  {letters[result[1]][i]}  {letters[result[2]][i]}")
+
+def play_slot_machine(win=False):
+    clearscreen()
+    print("A yarimbucuk project: Starting...")
+    time.sleep(1)
+
+    if win:
+        result = win_slot_machine()
+    else:
+        result = spin_slot_machine()
+
+    print_result(result)
+
+    if check_win(result):
+        print("\nYou WON!")
+    else:
+        print("\nYou LOST!")
+
+    print("Going back to the main menu...")
+    time.sleep(2)
+    menu()
+
+
+
+
